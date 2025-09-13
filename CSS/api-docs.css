@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* ========== NAVIGATION ========== */
+.navbar {
+    background-color: #ffffff; /* Same as container background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 10em;
+    border-radius: 1em;
+    margin: 1em auto;
+    max-width: 1500px;
+}
+
+/* Links as buttons */
+.navbar a {
+    color: #333; /* Same as text color */
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+
+.navbar a:hover {
+    color: #007BFF; /* Match button hover */
+    transform: scale(1.05);
+}
+
+/* Copy IP button */
+.copy-btn {
+  background: #0ea5e9;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.copy-btn:hover {
+  background: #0284c7;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  text-align: center;
+  padding: 5rem 1rem;
+  background: linear-gradient(to bottom right, #e0f2fe, #f0f9ff);
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #0f172a;
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+.hero-title .highlight {
+  color: #0ea5e9;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #334155;
+}
+
+.hero button {
+  background: #0ea5e9;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero button:hover {
+  background: #0284c7;
+}
+
+/* ========== GAME MODES ========== */
+.server-list {
+    margin-top: 2em;
+}
+
+.server-item {
+    background-color: #f0f8ff;
+    padding: 1.5em;
+    margin: 0.8em 0;
+    border-radius: 0.5em;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.api-item {
+    text-align: left
+}
+
+.server-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.server-item h2 {
+    margin: 0.5em 0;
+    font-size: 1.5em;
+}
+
+.server-item p {
+    margin: 0.5em 0;
+    font-size: 1em;
+    color: #555;
+}
+
+a {
+    color: #38488f;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #007BFF;
+}
+
+.container {
+    max-width: 800px;
+    margin: 4em auto;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 1em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.container:hover {
+    background-color: #e6f7ff; /* Subtle aqua highlight */
+    transform: scale(1.03);
+}
+
+.api-container {
+            background: #222;
+            color: #fff;.navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+        }
+        .api-title {
+            color: #4CAF50;
+        }
+        .api-target {
+            color: #4CAF50;
+        }
+        .api-path {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .api-query {
+            color: #00bcd4;
+        }
+        .api-return {
+            color: #f44336;
+        }
+        .datatype {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .description {
+            color: #999;
+        }
+
+/* ========== NEWS SECTION ========== */
+.news {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.news h2 {
+  margin-bottom: 1rem;
+  color: #0ea5e9;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 0.9rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+
+@media (max-width: 700px) {
+    .container {
+        padding: 1em;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
