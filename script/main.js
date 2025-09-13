@@ -56,3 +56,60 @@ if (statsform) {
             });
     });
 }
+
+// 假資料示範，可以換成實際 API
+const otherPlayers = [
+  { name: "Notch", level: 10, coins: 1234 },
+  { name: "Steve", level: 8, coins: 890 },
+  { name: "Alex", level: 12, coins: 2345 },
+];
+
+const playersGrid = document.getElementById('playersGrid');
+otherPlayers.forEach(player => {
+  const card = document.createElement('div');
+  card.classList.add('player-card');
+  card.innerHTML = `
+    <h3>${player.name}</h3>
+    <p>Level: ${player.level}</p>
+    <p>Coins: ${player.coins}</p>
+  `;
+  playersGrid.appendChild(card);
+});
+
+const availablePlayers = ["InyTw", "bedtwL", "Notch", "Steve"];
+
+const playerInput = document.getElementById('playerInput');
+const suggestions = document.getElementById('suggestions');
+
+// 顯示建議
+function showSuggestions(filter = "") {
+  suggestions.innerHTML = '';
+  const filtered = availablePlayers.filter(p => p.toLowerCase().includes(filter.toLowerCase()));
+  filtered.forEach(p => {
+    const div = document.createElement('div');
+    div.textContent = p;
+    div.addEventListener('click', () => {
+      playerInput.value = p;
+      suggestions.innerHTML = '';
+    });
+    suggestions.appendChild(div);
+  });
+}
+
+// 點擊輸入框顯示全部玩家
+playerInput.addEventListener('focus', () => {
+  showSuggestions();
+});
+
+// 輸入文字時篩選建議
+playerInput.addEventListener('input', () => {
+  const val = playerInput.value;
+  showSuggestions(val);
+});
+
+// 點擊頁面其他地方隱藏建議
+document.addEventListener('click', (e) => {
+  if (!playerInput.contains(e.target) && !suggestions.contains(e.target)) {
+    suggestions.innerHTML = '';
+  }
+});

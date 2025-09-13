@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bedtwL Server | Player Stats</title>
+  <link rel="stylesheet" href="CSS/player-stats.css">
+  <link rel="icon" href="https://raw.githubusercontent.com/bedtwL/bedtwLServerSite/refs/heads/main/favicon.ico">
+  <style>
+    /* 自訂下拉建議 */
+    .suggestions {
+      border: 1px solid #cbd5e1;
+      max-width: 605px;
+      background: #fff;
+      position: absolute;
+      z-index: 1000;
+      width: calc(100% - 2px);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .suggestions div {
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .suggestions div:hover {
+      background: #0ea5e9;
+      color: #fff;
+    }
+
+    .query-section { position: relative; max-width: 700px; margin: 3rem auto; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div class="navbar">
+    <a href="/main.html">Home</a>
+    <a href="/api-docs.html">API Docs</a>
+    <a href="/player-stats.html">Player Stats</a>
+    <a href="/news.html">News</a>
+    <a href="https://discord.gg/yourdiscord" target="_blank">Discord</a>
+    <button class="copy-btn" onclick="copyIP()">Copy IP</button>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="hero-title">bedtw<span class="highlight">L</span> Server Player Global Stats</h1>
+    <p>Enter a player name or UUID to fetch global stats.</p>
+  </section>
+
+  <!-- Query Form -->
+  <section class="query-section">
+    <form id="playerForm" class="query-form">
+      <input type="text" id="playerInput" placeholder="Enter player name or UUID" autocomplete="off" required />
+      <button type="submit">Search</button>
+    </form>
+    <div class="suggestions" id="suggestions"></div>
+
+    <!-- API-Style Result Display -->
+    <div id="result" class="result-card" style="display:none;">
+      <h2>bedtwL Server Player Global Stats</h2>
+      <pre id="resultContent">
+{
+    "coins": 0 # Player Global Coins,
+    "level": 0 # Player Global levels,
+    "xp": 0 # Player Global exp,
+    "name": "" # Player Name,
+    "gift_count": 0 # Player gift count,
+    "uuid": "" # Player UUID
+}
+      </pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 bedtwL Server | Not affiliated with Mojang</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+  const availablePlayers = ["InyTw", "bedtwL", "Notch", "Steve"];
+  const playerInput = document.getElementById('playerInput');
+  const suggestions = document.getElementById('suggestions');
+  const form = document.getElementById('playerForm');
+  const resultDiv = document.getElementById('result');
+  const resultContent = document.getElementById('resultContent');
+
+  function showSuggestions(filter = '') {
+    suggestions.innerHTML = '';
+    let filtered = availablePlayers;
+
+    if (filter) {
+      const val = filter.toLowerCase();
+      filtered = availablePlayers.filter(p => p.toLowerCase().includes(val));
+    }
+
+    filtered.forEach(p => {
+      const div = document.createElement('div');
+      div.textContent = p;
+      div.addEventListener('mousedown', () => { // 點建議時直接搜尋
+        playerInput.value = p;
+        suggestions.innerHTML = '';
+        form.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
+      });
+      suggestions.appendChild(div);
+    });
+
+    suggestions.style.display = filtered.length ? 'block' : 'none';
+  }
+
+  playerInput.addEventListener('focus', () => showSuggestions());
+  playerInput.addEventListener('input', () => showSuggestions(playerInput.value));
+  playerInput.addEventListener('blur', () => setTimeout(() => suggestions.style.display='none', 100));
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const player = playerInput.value.trim();
+    if (!player) return;
+
+    fetch(`https://bedtwl.com/api/v1/player/global?player=${player}`)
+      .then(res => {
+        if (!res.ok) throw new Error("Player not found or API error");
+        return res.json();
+      })
+      .then(data => {
+        resultContent.textContent = `{
+  "coins": ${data.coins} # Player Global Coins,
+  "level": ${data.level} # Player Global levels,
+  "xp": ${data.xp} # Player Global exp,
+  "name": "${data.name}" # Player Name,
+  "gift_count": ${data.gift_count} # Player gift count,
+  "uuid": "${data.uuid}" # Player UUID
+}`;
+        resultDiv.style.display = "block";
+      })
+      .catch(err => {
+        resultContent.textContent = `Error: ${err.message}`;
+        resultDiv.style.display = "block";
+      });
+  });
+</script>
+
+   <script src="/script/main.js"></script>
+</body>
+</html>
