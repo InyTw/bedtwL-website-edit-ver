@@ -113,3 +113,25 @@ document.addEventListener('click', (e) => {
     suggestions.innerHTML = '';
   }
 });
+
+
+// 取得伺服器即時人數
+function updateOnlinePlayers() {
+  fetch('https://api.mcsrvstat.us/2/bedtwl.com') // 你的 API URL
+    .then(res => res.json())
+    .then(data => {
+      // 假設 API 回傳 { online: 123, max: 500 }
+      document.getElementById('onlinePlayers').textContent =
+        `${data.online} / ${data.max} players online`;
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('onlinePlayers').textContent = "Error fetching data";
+    });
+}
+
+// 初始載入時更新一次
+updateOnlinePlayers();
+
+// 每 30 秒自動更新一次
+setInterval(updateOnlinePlayers, 30000);
