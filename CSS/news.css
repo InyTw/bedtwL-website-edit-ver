@@ -15,15 +15,15 @@ body {
 
 /* ========== NAVBAR ========== */
 .navbar {
-  background-color: #ffffff;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  padding: 1em 2em;
-  display: flex;
-  justify-content: center;
-  gap: 10em;
-  border-radius: 1em;
-  margin: 1em auto;
-  max-width: 1600px;
+    background-color: #ffffff; /* Same as container background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 10em;
+    border-radius: 1em;
+    margin: 1em auto;
+    max-width: 1500px;
 }
 
 .navbar a {
@@ -127,6 +127,59 @@ body {
   color: #475569;
   font-size: 0.95rem;
   list-style-type: disc;
+}
+
+/* ======= NEWS DETAIL =======*/
+.news-detail {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 2rem;
+}
+
+.news-detail h1 {
+    font-size: 2.5rem; /* 標題更大 */
+    color: #0ea5e9;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.news-detail .date {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+}
+
+.news-detail .content {
+    font-size: 1.3rem; /* 放大內容文字 */
+    color: #475569;
+    line-height: 2; /* 行距更大，換行時不擠 */
+    margin-bottom: 2rem;
+    white-space: pre-wrap; /* 按 Enter 換行 */
+}
+
+.news-detail .content p {
+    margin-bottom: 1rem; /* 段落間距 */
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.6rem 1.2rem;
+    background: #0ea5e9;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.back-btn:hover {
+    background: #0284c7;
+    transform: scale(1.05);
 }
 
 /* ========== FOOTER ========== */

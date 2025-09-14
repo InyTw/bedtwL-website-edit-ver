@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Admin | BedtwL</title>
+<link rel="stylesheet" href="CSS/news-admin.css">
+<link rel="icon" href="https://raw.githubusercontent.com/bedtwL/bedtwLServerSite/refs/heads/main/favicon.ico">
+</head>
+<body>
+<div class="navbar">
+  <a href="/main.html">Home</a>
+  <a href="/news.html">News</a>
+</div>
+
+<section class="hero">
+  <h1>News Admin</h1>
+  <p>Only authorized personnel can add/update news</p>
+</section>
+
+<div class="news-form">
+  <input type="text" id="newsTitle" placeholder="News Title">
+  <textarea id="newsContent" placeholder="News Content (按Enter換行)" rows="5"></textarea>
+  <input type="date" id="newsDate">
+  <input type="file" id="newsImage" accept="image/*">
+  <img id="imagePreview" src="" style="max-width:100%; margin-bottom:1rem; display:none; border-radius:8px;">
+  <button id="addNewsBtn">Add / Update News</button>
+</div>
+
+<script>
+let newsData = JSON.parse(localStorage.getItem("newsItems")) || [];
+const newsImage = document.getElementById('newsImage');
+const imagePreview = document.getElementById('imagePreview');
+let currentImageData = '';
+
+// Image preview
+newsImage.addEventListener('change', e=>{
+  const file = e.target.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = ()=> {
+      currentImageData = reader.result;
+      imagePreview.src = currentImageData;
+      imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    currentImageData = '';
+    imagePreview.src = '';
+    imagePreview.style.display = 'none';
+  }
+});
+
+// Generate ID
+function generateId(){ return Math.random().toString(36).substr(2,6); }
+
+// Add news
+document.getElementById('addNewsBtn').addEventListener('click', ()=>{
+  const title = document.getElementById('newsTitle').value.trim();
+  const content = document.getElementById('newsContent').value.trim();
+  const date = document.getElementById('newsDate').value || new Date().toISOString().split('T')[0];
+  if(!title || !content){ alert("請填寫標題與內容"); return; }
+
+  newsData.push({id: generateId(), title, content, date, image: currentImageData});
+  localStorage.setItem("newsItems", JSON.stringify(newsData));
+
+  // Clear form
+  document.getElementById('newsTitle').value='';
+  document.getElementById('newsContent').value='';
+  newsImage.value='';
+  imagePreview.src='';
+  imagePreview.style.display='none';
+  currentImageData='';
+
+  alert("News saved!");
+});
+</script>
+</body>
+</html>
