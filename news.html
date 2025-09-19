@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-<!-- Navbar -->
+
   <div class="navbar">
     <a href="index.html">Home</a>
     <a href="api-docs.html">API Docs</a>
@@ -42,7 +42,7 @@
 </footer>
 
 <script>
-const today = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
+const today = new Date().toISOString().split('T')[0];
 fetch(`/news/${today}.json`)
   .then(res=>res.json())
   .then(newsItems=>{
