@@ -87,46 +87,20 @@ body {
   color: #334155;
 }
 
-/* ========== NEWS SECTION ========== */
-.news-section {
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.news-card {
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+/* ======== 卡片 ======== */
+.card {
+  background: var(--card-bg);
+  border-radius: 15px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.news-card:hover {
+.card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-.news-card h2 {
-  color: #0f172a;
-  margin-bottom: 0.5rem;
-}
-
-.news-card p em {
-  font-size: 0.9rem;
-  color: #64748b;
-}
-
-.news-card ul {
-  margin-top: 0.5rem;
-  padding-left: 1.2rem;
-  color: #475569;
-  font-size: 0.95rem;
-  list-style-type: disc;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.7);
 }
 
 /* ======= NEWS DETAIL =======*/
