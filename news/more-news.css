@@ -127,13 +127,14 @@ p, li {
 
 /* ======== Main ======== */
 main {
+  max-width: 900px;       /* 內文區塊寬度 */
+  margin: 2rem auto;      /* 左右自動置中 */
   padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 每排 5 個 */
-  gap: 2rem;
-  position: relative;
-  z-index: 1;
+  background: #ffffff;    /* 給內文一個白色背景（更像新聞排版） */
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
+
 
 /* ========== FOOTER ========== */
 footer {
