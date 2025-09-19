@@ -181,3 +181,13 @@ main {
     grid-template-columns: 1fr; /* 手機顯示 1 個 */
   }
 }
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 0.9rem;
+  border-top: 1px solid #e2e8f0;
+}

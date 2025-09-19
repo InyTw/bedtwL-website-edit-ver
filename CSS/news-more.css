@@ -122,11 +122,12 @@ aside.related-news ul li a:hover {
     text-decoration: underline;
 }
 
-/* Footer */
+/* ========== FOOTER ========== */
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #003366;
-    color: white;
-    margin-top: 40px;
+  text-align: center;
+  padding: 1rem;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 0.9rem;
+  border-top: 1px solid #e2e8f0;
 }
