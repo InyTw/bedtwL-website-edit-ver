@@ -132,3 +132,24 @@ footer {
   border-top: 1px solid #e5e7eb;
   margin-top: 3rem;
 }
+
+
+/* image-gallery */
+.image-gallery {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.image-gallery img {
+  max-width: 100%;      /* 不會超出文章範圍 */
+  height: auto;
+  border-radius: 6px;   /* 圓角 */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.image-gallery figcaption {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 0.6rem;
+  line-height: 1.4;
+}
