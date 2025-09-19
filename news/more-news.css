@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
 
 * {
   margin: 0;
@@ -7,16 +7,15 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: #f9fafb;
-  color: #111827;
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #f5f6f8;
+  color: #111;
   line-height: 1.8;
 }
 
-/* ========== NAVBAR ========== */
+/* NAVBAR */
 .navbar {
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: #fff;
   padding: 1em;
   display: flex;
   justify-content: center;
@@ -25,83 +24,71 @@ body {
 }
 
 .navbar a {
-  color: #374151;
+  color: #333;
+  font-weight: 600;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 600;
-  transition: color 0.2s ease;
 }
-
 .navbar a:hover {
-  color: #0ea5e9;
+  color: #005BAC; /* TVBS藍 */
 }
 
-.copy-btn {
-  background: #0ea5e9;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.copy-btn:hover {
-  background: #0284c7;
-}
-
-/* ========== MAIN ARTICLE ========== */
+/* MAIN ARTICLE */
 main {
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 article h1 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 700;
+  line-height: 1.4;
   margin-bottom: 1rem;
-  color: #111827;
+  color: #111;
 }
 
 .meta {
-  display: flex;
-  gap: 1rem;
   font-size: 0.9rem;
   color: #6b7280;
   margin-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.8rem;
 }
 
 .content p {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   font-size: 1.1rem;
-  color: #1f2937;
   text-align: justify;
+  color: #222;
 }
 
-/* 引用樣式 */
+/* 引用文字 */
 .content blockquote {
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   padding: 1rem 1.2rem;
-  border-left: 4px solid #0ea5e9;
-  background: #f3f4f6;
+  border-left: 5px solid #005BAC;
+  background: #f0f4fa;
+  color: #333;
   font-style: italic;
-  color: #374151;
-  border-radius: 4px;
+  font-size: 1.05rem;
+  border-radius: 2px;
 }
 
 /* 上下篇導覽 */
 .article-nav {
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 2px solid #f1f1f1;
   display: flex;
   justify-content: space-between;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 .article-nav a {
-  color: #0ea5e9;
+  color: #005BAC;
   text-decoration: none;
   font-weight: 600;
 }
@@ -109,7 +96,7 @@ article h1 {
   text-decoration: underline;
 }
 
-/* ========== FOOTER ========== */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 1.5rem;
