@@ -135,3 +135,7 @@ updateOnlinePlayers();
 
 // 每 30 秒自動更新一次
 setInterval(updateOnlinePlayers, 30000);
+
+function toggleMenu() {
+  document.querySelector(".navbar").classList.toggle("show");
+}

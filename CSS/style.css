@@ -187,3 +187,43 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid #e2e8f0;
 }
+
+/* 漢堡按鈕：桌機隱藏，手機顯示 */
+.menu-toggle {
+  display: none;
+  background: #0ea5e9;
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* RWD 響應式 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    margin: 1rem auto;
+  }
+
+  .navbar {
+    display: none;                 /* 預設隱藏 */
+    flex-direction: column;        /* 垂直排列 */
+    gap: 1rem;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .navbar.show {
+    display: flex;                 /* 點擊後展開 */
+  }
+
+  .navbar a,
+  .copy-btn {
+    text-align: center;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+}
