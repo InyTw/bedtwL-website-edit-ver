@@ -125,7 +125,7 @@ p, li {
 
 /* ======== 連結 ======== */
 a {
-  color: var(--accent);
+  color: #4c00ff;
   text-decoration: none;
   transition: all 0.3s;
 }
