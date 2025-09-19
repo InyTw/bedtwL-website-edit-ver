@@ -87,6 +87,16 @@ body {
   color: #334155;
 }
 
+/* ======== Main ======== */
+main {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1; /* 確保卡片在粒子上層 */
+}
+
 /* ======== 卡片 ======== */
 .card {
   background: var(--card-bg);
@@ -103,65 +113,71 @@ body {
   box-shadow: 0 12px 30px rgba(0,0,0,0.7);
 }
 
-/* ======= NEWS DETAIL =======*/
-.news-detail {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 2rem;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    padding: 2rem;
+/* ======== 標題與文字 ======== */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.news-detail h1 {
-    font-size: 2.5rem; /* 標題更大 */
-    color: #0ea5e9;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+p, li {
+  line-height: 1.6;
 }
 
-.news-detail .date {
-    font-size: 1.1rem;
-    color: #94a3b8;
-    margin-bottom: 2rem;
+/* ======== 連結 ======== */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
-.news-detail .content {
-    font-size: 1.3rem; /* 放大內容文字 */
-    color: #475569;
-    line-height: 2; /* 行距更大，換行時不擠 */
-    margin-bottom: 2rem;
-    white-space: pre-wrap; /* 按 Enter 換行 */
+a:hover {
+  text-decoration: underline;
+  color: #8b5cf6;
 }
 
-.news-detail .content p {
-    margin-bottom: 1rem; /* 段落間距 */
+/* ======== 背景 Canvas ======== */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.back-btn {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.6rem 1.2rem;
-    background: #0ea5e9;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
+/* ======== 響應式 ======== */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
 }
 
-.back-btn:hover {
-    background: #0284c7;
-    transform: scale(1.05);
+/* ======== Main ======== */
+main {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 每排 5 個 */
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* ========== FOOTER ========== */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #f1f5f9;
-  color: #64748b;
-  font-size: 0.9rem;
-  border-top: 1px solid #e2e8f0;
+/* 響應式調整 */
+@media (max-width: 1200px) {
+  main {
+    grid-template-columns: repeat(3, 1fr); /* 中螢幕顯示 3 個 */
+  }
+}
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: repeat(2, 1fr); /* 平板顯示 2 個 */
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr; /* 手機顯示 1 個 */
+  }
 }
