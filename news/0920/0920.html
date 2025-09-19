@@ -7,128 +7,188 @@
 </head>
 
 <style>
-  /* Reset some default styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Body and main layout */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  color: #1e293b;
+  line-height: 1.6;
 }
 
-/* Header */
-header {
-    background-color: #003366;
-    color: white;
-    padding: 10px 0;
+/* ========== NAVBAR ========== */
+.navbar {
+    background-color: #ffffff; /* Same as container background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 1em;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    gap: 10em;
+    border-radius: 1em;
+    margin: 1em auto;
+    max-width: 1500px;
 }
 
-header .logo img {
-    width: 100px;
-    height: auto;
+.navbar a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
 }
 
-header nav ul {
-    list-style: none;
-    display: flex;
+.navbar a:hover {
+  color: #0ea5e9;
+  transform: scale(1.05);
 }
 
-header nav ul li {
-    margin-left: 20px;
+.copy-btn {
+  background: #0ea5e9;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.copy-btn:hover {
+  background: #0284c7;
 }
 
-/* Main content */
+/* ========== HERO SECTION ========== */
+.hero {
+  text-align: center;
+  padding: 5rem 1rem;
+  background: linear-gradient(to bottom right, #e0f2fe, #f0f9ff);
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #0f172a;
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+.hero-title .highlight {
+  color: #0ea5e9;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #334155;
+}
+
+/* ======== Main ======== */
 main {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1; /* 確保卡片在粒子上層 */
 }
 
-/* Article */
-article h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+/* ======== 卡片 ======== */
+.card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-article .author,
-article .publish-time {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 10px;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.7);
 }
 
-article .content p {
-    margin-bottom: 15px;
-    font-size: 1.125rem;
-    line-height: 1.8;
+/* ======== 標題與文字 ======== */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-article .image-gallery {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
+p, li {
+  line-height: 1.6;
 }
 
-article .image-gallery figure {
-    flex: 1;
+/* ======== 連結 ======== */
+a {
+  color: #4c00ff;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
-article .image-gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+a:hover {
+  text-decoration: underline;
+  color: #8b5cf6;
 }
 
-article .image-gallery figcaption {
-    text-align: center;
-    margin-top: 5px;
-    font-size: 0.875rem;
-    color: #666;
+/* ======== 背景 Canvas ======== */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* Sidebar */
-aside.related-news {
-    margin-top: 30px;
+/* ======== 響應式 ======== */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
 }
 
-aside.related-news h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+/* ======== Main ======== */
+main {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 每排 5 個 */
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-aside.related-news ul {
-    list-style: none;
+/* 響應式調整 */
+@media (max-width: 1200px) {
+  main {
+    grid-template-columns: repeat(3, 1fr); /* 中螢幕顯示 3 個 */
+  }
 }
 
-aside.related-news ul li {
-    margin-bottom: 10px;
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: repeat(2, 1fr); /* 平板顯示 2 個 */
+  }
 }
 
-aside.related-news ul li a {
-    color: #003366;
-    text-decoration: none;
-    font-size: 1.125rem;
-}
-
-aside.related-news ul li a:hover {
-    text-decoration: underline;
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr; /* 手機顯示 1 個 */
+  }
 }
 
 /* ========== FOOTER ========== */
