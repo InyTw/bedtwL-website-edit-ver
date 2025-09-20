@@ -7,6 +7,20 @@
   const resultDiv = document.getElementById('result');
   const resultContent = document.getElementById('resultContent');
 
+function showSuggestions(filter = "") {
+  suggestions.innerHTML = '';
+  const filtered = availablePlayers.filter(p => p.toLowerCase().includes(filter.toLowerCase()));
+  filtered.forEach(p => {
+    const div = document.createElement('div');
+    div.textContent = p;
+    div.addEventListener('click', () => {
+      playerInput.value = p;
+      suggestions.innerHTML = '';
+    });
+    suggestions.appendChild(div);
+  });
+}
+
   function showSuggestions(filter = '') {
     suggestions.innerHTML = '';
     let filtered = availablePlayers;
