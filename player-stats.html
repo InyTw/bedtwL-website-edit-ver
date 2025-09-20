@@ -74,69 +74,7 @@
     <p>© 2025 bedtwL Server | Not affiliated with Mojang</p>
   </footer>
 
-  <script>
-  const availablePlayers = ["InyTw", "bedtwL", "Notch", "Steve"];
-  const playerInput = document.getElementById('playerInput');
-  const suggestions = document.getElementById('suggestions');
-  const form = document.getElementById('playerForm');
-  const resultDiv = document.getElementById('result');
-  const resultContent = document.getElementById('resultContent');
-
-  function showSuggestions(filter = '') {
-    suggestions.innerHTML = '';
-    let filtered = availablePlayers;
-
-    if (filter) {
-      const val = filter.toLowerCase();
-      filtered = availablePlayers.filter(p => p.toLowerCase().includes(val));
-    }
-
-    filtered.forEach(p => {
-      const div = document.createElement('div');
-      div.textContent = p;
-      div.addEventListener('mousedown', () => {
-        playerInput.value = p;
-        suggestions.innerHTML = '';
-        form.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
-      });
-      suggestions.appendChild(div);
-    });
-
-    suggestions.style.display = filtered.length ? 'block' : 'none';
-  }
-
-  playerInput.addEventListener('focus', () => showSuggestions());
-  playerInput.addEventListener('input', () => showSuggestions(playerInput.value));
-  playerInput.addEventListener('blur', () => setTimeout(() => suggestions.style.display='none', 100));
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const player = playerInput.value.trim();
-    if (!player) return;
-
-    fetch(`https://bedtwl.com/api/v1/player/global?player=${player}`)
-      .then(res => {
-        if (!res.ok) throw new Error("Player not found or API error");
-        return res.json();
-      })
-      .then(data => {
-        resultContent.textContent = `{
-  "coins": ${data.coins} # Player Global Coins,
-  "level": ${data.level} # Player Global levels,
-  "xp": ${data.xp} # Player Global exp,
-  "name": "${data.name}" # Player Name,
-  "gift_count": ${data.gift_count} # Player gift count,
-  "uuid": "${data.uuid}" # Player UUID
-}`;
-        resultDiv.style.display = "block";
-      })
-      .catch(err => {
-        resultContent.textContent = `Error: ${err.message}`;
-        resultDiv.style.display = "block";
-      });
-  });
-</script>
-
+   <script src="scripts/bwffa_stats.js"></script>
    <script src="scripts/main.js"></script>
 </body>
 </html>
