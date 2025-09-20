@@ -16,6 +16,8 @@ function copyIP() {
 const copybtn = document.querySelector('.copy-btn');
 if (copybtn) copybtn.addEventListener('click', copyIP);
 
+
+
 const availablePlayers = ["bedtwL", "InyTw", "UnlimitFPS", "Itz_OuO", "CoolCat_487"];
 
 const playerInput = document.getElementById('playerInput');

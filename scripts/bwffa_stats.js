@@ -1,6 +1,6 @@
 // BWFFA stats
 
-  const availablePlayers = ["InyTw", "bedtwL", "Notch", "Steve"];
+  const availablePlayers = ["bedtwL", "InyTw", "UnlimitFPS", "Itz_OuO", "CoolCat_487"];
   const playerInput = document.getElementById('playerInput');
   const suggestions = document.getElementById('suggestions');
   const form = document.getElementById('playerForm');
