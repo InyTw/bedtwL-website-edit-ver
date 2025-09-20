@@ -74,6 +74,28 @@
     <p>© 2025 bedtwL Server | Not affiliated with Mojang</p>
   </footer>
 
+   <script>
+const availablePlayers = ["bedtwL", "InyTw", "UnlimitFPS", "Itz_OuO", "CoolCat_487"];
+
+const playerInput = document.getElementById('playerInput');
+const suggestions = document.getElementById('suggestions');
+
+// 顯示建議
+function showSuggestions(filter = "") {
+  suggestions.innerHTML = '';
+  const filtered = availablePlayers.filter(p => p.toLowerCase().includes(filter.toLowerCase()));
+  filtered.forEach(p => {
+    const div = document.createElement('div');
+    div.textContent = p;
+    div.addEventListener('click', () => {
+      playerInput.value = p;
+      suggestions.innerHTML = '';
+    });
+    suggestions.appendChild(div);
+  });
+}
+   </script>
+   
    <script src="scripts/bwffa_stats.js"></script>
    <script src="scripts/main.js"></script>
 </body>
