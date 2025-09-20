@@ -16,67 +16,7 @@ function copyIP() {
 const copybtn = document.querySelector('.copy-btn');
 if (copybtn) copybtn.addEventListener('click', copyIP);
 
-function navbar() {
-    const navbar = document.getElementById("navbar");
-    navbar.innerHTML += `<div class="nav-button"><a href="/">Home</a></div>`;
-    navbar.innerHTML += `<div class="nav-button"><a href="/api-docs.html">API Docs</a></div>`;
-    navbar.innerHTML += `<div class="nav-button"><a href="/stats.html">Player Stats</a></div>`;
-}
-navbar();
-const statsform = document.getElementById("statsform");
-
-if (statsform) {
-    statsform.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById("stats").value.trim();
-        const result = document.getElementById("result");
-
-        if (!name) {
-            result.innerText = "Please enter a player name.";
-            return;
-        }
-
-        const url = `https://api.bedtwl.com/api/v1/player/bwffa?player=${encodeURIComponent(name)}`;
-
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("API error: " + response.status);
-                }
-                return response.json();
-            })
-            .then(data => {
-                const datae = JSON.stringify(data, null, 2);
-                // Replace this with how you want to display the result
-                result.innerHTML = `<span>Kills: </span>${datae.kills}</span><span>Deaths: </span><span>${datae.deaths}</span><br><span>Best Kill Streak: </span><span>${datae.best_killstreak}</span><span>Last Kill Streak: </span><span>${datae.last_killstreak}</span><br><span>Skill: </span><span>${datae.skill}</span<br><span>Skill level: </span><span>${datae.skill_levl}</span><br>`;
-            })
-            .catch(error => {
-                result.innerText = "Error fetching data: " + error.message;
-            });
-    });
-}
-
-// 假資料示範，可以換成實際 API
-const otherPlayers = [
-  { name: "Notch", level: 10, coins: 1234 },
-  { name: "Steve", level: 8, coins: 890 },
-  { name: "Alex", level: 12, coins: 2345 },
-];
-
-const playersGrid = document.getElementById('playersGrid');
-otherPlayers.forEach(player => {
-  const card = document.createElement('div');
-  card.classList.add('player-card');
-  card.innerHTML = `
-    <h3>${player.name}</h3>
-    <p>Level: ${player.level}</p>
-    <p>Coins: ${player.coins}</p>
-  `;
-  playersGrid.appendChild(card);
-});
-
-const availablePlayers = ["InyTw", "bedtwL", "Notch", "Steve"];
+const availablePlayers = ["bedtwL", "InyTw", "UnlimitFPS", "Itz_OuO", "CoolCat_487"];
 
 const playerInput = document.getElementById('playerInput');
 const suggestions = document.getElementById('suggestions');
